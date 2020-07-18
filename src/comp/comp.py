@@ -1,6 +1,7 @@
 # The following list comprehension exercises will make use of the
 # defined Human class.
 import math
+from string import ascii_uppercase
 
 
 class Human:
@@ -47,17 +48,10 @@ print(b)
 # whose name starts with any letter between 'C' and 'G' inclusive.
 print("Starts between C and G, inclusive:")
 c = []
-for human in humans:
-    if(human.name[0].upper() == "C"):
-        c.append(human.name)
-    if(human.name[0].upper() == "D"):
-        c.append(human.name)
-    if(human.name[0].upper() == "E"):
-        c.append(human.name)
-    if(human.name[0].upper() == "F"):
-        c.append(human.name)
-    if(human.name[0].upper() == "G"):
-        c.append(human.name)
+c_index_start = ascii_uppercase.index('C')
+g_index_end = ascii_uppercase.index('G')
+c = [human.name for human in humans if human.name[0].upper()
+     in ascii_uppercase[c_index_start: g_index_end+1]]
 print(c)
 
 # Write a list comprehension that creates a list of all the ages plus 10.
